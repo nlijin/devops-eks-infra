@@ -4,7 +4,7 @@ pipeline {
   environment {
     AWS_DEFAULT_REGION = "ap-south-1"
     AWS_CREDENTIALS = credentials('aws-creds')       // Jenkins credentials ID
-    ECR_REPO = "devops-eks-app"
+    ECR_REPO = "devops-demo-repo"
     CLUSTER_NAME = "devops-eks-demo"
   }
 
