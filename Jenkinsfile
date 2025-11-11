@@ -16,17 +16,22 @@ pipeline {
     }
 
 
-      stage('Terraform Init & Apply') {
+ stage('Terraform Init & Apply') {
   steps {
-    withAWS(credentials: 'aws-creds', region: 'ap-south-1') {
-      sh '''
-        terraform init -input=false
-        terraform plan -out=tfplan -input=false
-        terraform apply -input=false -auto-approve tfplan
-      '''
+    script {
+      withAWS(credentials: 'aws-creds', region: 'ap-south-1') {
+        sh '''
+          echo "🚀 Running Terraform Init & Apply..."
+          cd terraform
+          terraform init -input=false
+          terraform plan -out=tfplan -input=false
+          terraform apply -auto-approve tfplan
+        '''
+      }
     }
   }
 }
+
 
 
     stage('Build Docker Image') {
