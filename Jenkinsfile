@@ -16,13 +16,12 @@ pipeline {
     }
 
 
- stage('Terraform Init & Apply') {
+stage('Terraform Init & Apply') {
   steps {
     script {
       withAWS(credentials: 'aws-creds', region: 'ap-south-1') {
         sh '''
           echo "🚀 Running Terraform Init & Apply..."
-          cd terraform
           terraform init -input=false
           terraform plan -out=tfplan -input=false
           terraform apply -auto-approve tfplan
@@ -31,6 +30,7 @@ pipeline {
     }
   }
 }
+
 
 
 
