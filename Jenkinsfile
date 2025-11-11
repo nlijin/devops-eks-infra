@@ -17,7 +17,6 @@ pipeline {
 
     stage('Terraform Init & Apply') {
       steps {
-        dir('terraform') {
           sh '''
             terraform init -input=false
             terraform plan -out=tfplan -input=false
@@ -25,7 +24,6 @@ pipeline {
           '''
         }
       }
-    }
 
     stage('Build Docker Image') {
       steps {
