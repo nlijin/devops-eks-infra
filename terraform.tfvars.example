@@ -1,0 +1,6 @@
+# Example Terraform variables file
+aws_region   = "ap-south-1"
+aws_profile  = "default"
+cluster_name = "devops-eks-demo"
+ecr_repo_name = "devops-eks-app"
+
